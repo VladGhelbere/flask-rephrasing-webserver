@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block main %}
+<form method="post" action="/home/">
+	<textarea name="input_text" type="message" id="inputText" class="form-control" style="width:600px; height:600px; float:left" placeholder="Introduceti textul aici...">{{input_text}}</textarea>
+	<button name="submit_button" value="process_text" type="submit" class="btn btn-outline-dark" style="float:left">Modify</button>
+	<textarea name="output_text" readonly type="message" id="outputText" class="form-control" style="width:600px; height:600px; float:left" placeholder="Rezultatul va aparea aici...">{{output_text}}</textarea>
+</form>
+<div class="form-text" style="width:600px; height:600px;">
+  Mulțumim pentru interesul aratat siteului nostru. Acesta este un work-in-progress si pot aparea multe probleme in rephrasing. Asteptam cu nerabdare feedback-ul dumneavoastra !
+</div>
+{% endblock %}
