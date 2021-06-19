@@ -4,14 +4,14 @@ import words_master as words_master
 
 wm = words_master.words_master()
 
-APP = Flask(__name__)
-APP.secret_key = os.getenv("APP_SECRET_KEY")
+app = Flask(__name__)
+app.secret_key = os.getenv("app_SECRET_KEY")
 
-@APP.route("/")
+@app.route("/")
 def index():
     return redirect(url_for("home"))
 
-@APP.route("/home/", methods=['GET', 'POST'])
+@app.route("/home/", methods=['GET', 'POST'])
 def home():
     if request.method == 'POST': 
         if request.form['submit_button']:
@@ -20,7 +20,7 @@ def home():
     else:
         return render_template("index.html",highlight_h="active")
 
-@APP.route("/contact/", methods=['GET', 'POST'])
+@app.route("/contact/", methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
         # do-nothing
@@ -29,4 +29,4 @@ def contact():
         return render_template("contact.html",highlight_c="active")
 
 if __name__ == "__main__":
-    APP.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
