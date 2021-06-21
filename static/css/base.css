@@ -1,0 +1,13 @@
+div#loading {
+    position:fixed;
+    width: 35px;
+    height: 35px;
+    display: none;
+    background: url(/static/img/loadingimage.gif) no-repeat;
+    cursor: wait;
+    left: 60%;
+    top: 35%;
+    z-index: 1000;
+    height: 31px;
+    width: 31px;
+    }

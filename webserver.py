@@ -1,11 +1,11 @@
-from flask import Flask, redirect, url_for, render_template, request, session
+from flask import Flask, flash, redirect, url_for, render_template, request, session
 import os
 import words_master as words_master
 
 wm = words_master.words_master()
 
 app = Flask(__name__)
-app.secret_key = os.getenv("app_SECRET_KEY")
+app.secret_key = os.getenv("APP_SECRET_KEY")
 
 @app.route("/")
 def index():
@@ -16,7 +16,14 @@ def home():
     if request.method == 'POST': 
         if request.form['submit_button']:
             output_text = wm.change_words_simplified(request.form['input_text'])
-            return render_template("index.html",input_text=request.form['input_text'],output_text=output_text)
+            if len(output_text) >= 1500:
+                flash('Given text should be less than 1500 characters.')
+                return render_template("index.html",highlight_h="active")
+            elif output_text == '':
+                flash('Given text cannot be empty.')
+                return render_template("index.html",highlight_h="active")
+            else:
+                return render_template("index.html",highlight_h="active",input_text=request.form['input_text'],output_text=output_text)
     else:
         return render_template("index.html",highlight_h="active")
 
