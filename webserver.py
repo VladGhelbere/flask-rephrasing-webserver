@@ -1,8 +1,8 @@
 from flask import Flask, flash, redirect, url_for, render_template, request, session
 import os
-import words_master as words_master
+import words_master as word_m
 
-wm = words_master.words_master()
+wm = word_m.words_master()
 
 app = Flask(__name__)
 app.secret_key = os.getenv("APP_SECRET_KEY")
@@ -36,4 +36,4 @@ def contact():
         return render_template("contact.html",highlight_c="active")
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=80, debug=True)

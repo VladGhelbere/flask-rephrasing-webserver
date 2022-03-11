@@ -53,6 +53,7 @@ class words_master():
         return ro_text
 
     def change_words_simplified(self, text_block):
+        print(text_block)
         slight_text = translate_text(translate_text(text_block, 'en'), 'ro')
         print(slight_text)
         return slight_text
